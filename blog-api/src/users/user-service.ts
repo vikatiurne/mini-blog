@@ -21,6 +21,14 @@ class UserService {
       throw new Error(`Error getting all users ${error}`);
     }
   };
+
+  deleteUser = async (userId: string): Promise<IUser | null | void> => {
+    try {
+      return await User.findOneAndDelete({ _id: userId });
+    } catch (error) {
+      throw new Error(`Error removing user ${error}`);
+    }
+  };
 }
 
 export default new UserService();
